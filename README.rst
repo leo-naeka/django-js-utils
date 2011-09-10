@@ -1,6 +1,6 @@
-==========================
+=================================
 django_js_utils - Django JS Utils
-==========================
+=================================
 
 django_js_utils is a small utility library that aims to provide JavaScript/Django developers with
 a few utilities that will help the development of RIA on top of a
@@ -26,17 +26,26 @@ Installation and usage
 1. Add django_js_utils to your python path and add the django_js_utils application to your INSTALLED_APPS
 
 2. Add the jsurls view to your URL patterns, e.g.,
+
+::
+
     (r'^jsurls.js$', 'django_js_utils.views.jsurls', {}, 'jsurls'),
 
 3. Load the static django_js_utils.js (which contains the reverse function) and the dynamically-generated jsurls.js from every web page where you plan to use the reverse function (likely just your base.html template). Example:
+
+::
+
     <script type="text/javascript" src="{% staticfile 'django_js_utils.js' %}"></script>
     <script type="text/javascript" src="{% url jsurls %}"></script>
 
 4. In your JavaScript code, reverse URLs as follows:
+
+::
+
     django_js_utils.urls.resolve('dashboard')
     django_js_utils.urls.resolve('time_edit', { project_id: 1, time_id: 2 })
 
-For more usage, see example.html
+For more information about usage, see example.html
 
 
 TO-DO
