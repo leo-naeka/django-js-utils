@@ -43,7 +43,9 @@ def jsurls(request):
                             full_url = full_url.replace(el, "<>")#replace by a empty parameter name
                     js_patterns[pattern.name] = "/" + full_url
             elif issubclass(pattern.__class__, RegexURLResolver):
-                if pattern.urlconf_name:
+                if pattern.url_patterns:
+                    handle_url_module(js_patterns, pattern.url_patterns, prefix=pattern.regex.pattern)
+                elif pattern.urlconf_name:
                     handle_url_module(js_patterns, pattern.urlconf_name, prefix=pattern.regex.pattern)
 
     js_patterns = SortedDict()
